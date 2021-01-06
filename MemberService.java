@@ -3,10 +3,14 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+// @Component 가 @Service 에 포함되어 있음
+//@Service
 public class MemberService {
 
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -14,6 +18,8 @@ public class MemberService {
 
     // MemberRepository 를 직접 new 해서 생성하는 것이 아니라
     // memberRepository 를 외부에서 넣어줌 : Dependency Injection (DI)
+    // 스프링이 스프링 컨테이너에 있는 MemberRepository 를 가져다가 연결을 시켜줌
+    // 현재는 MemoryMemberRepository 가 구현체로 있기 때문에, MemoryMemberRepository 를 가져와서 연결시킴
    public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

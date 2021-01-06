@@ -1,9 +1,12 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+// @Component 가 @Repository 에 포함되어 있음
+//@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
     // 메모리에 어딘가에 저장하기 위해 Map 사용
