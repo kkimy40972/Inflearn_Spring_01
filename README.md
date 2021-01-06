@@ -6,6 +6,6 @@
 https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/dashboard
 
 
-**모든 내용은 위의 강의 내용을 토대로 작성되었습니다.
+**해당 내용은 위의 강의 내용을 토대로 작성되었습니다.
 
 
