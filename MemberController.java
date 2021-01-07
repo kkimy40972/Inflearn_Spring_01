@@ -1,8 +1,14 @@
 package hello.hellospring.controller;
 
+import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 // 처음 스프링을 시작할 때 스프링 컨테이너(통)가 생기는데
 // 컨트롤러 어노테이션이 있으면 이것을 보고
@@ -33,5 +39,33 @@ public class MemberController {
         this.memberService = memberService;
     }
 
+    // GET 은 조회할 때 주로 씀
+    // 기본적으로 url 창에 enter 를 누르는 것은 GetMapping
+    @GetMapping("/members/new")
+    public String createForm(){
+        return "members/createMemberForm";
+    }
 
+    // POST 는 form 에 데이터를 넣어서 전달할 때 사용. 데이터 등록할 때
+    @PostMapping("/members/new")
+    public String create(MemberForm form){
+        Member member = new Member();
+        member.setName(form.getName());
+        // -> 멤버가 만들어짐
+        System.out.println("member = " + member.getName());
+
+        // 만들어진 멤버를 넘김
+        memberService.join(member);
+
+        // 회원가입이 끝났으므로 홈화면으로 돌아가기
+        return "redirect:/";
+    }
+
+    @GetMapping("/members")
+    public String list(Model model){
+        List<Member> members = memberService.findMembers();
+        // members 데이터 자체를 다 model 에 넣어서 view 에 넘기기
+        model.addAttribute("members", members);
+        return "members/memberList";
+    }
 }
