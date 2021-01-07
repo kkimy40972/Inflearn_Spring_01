@@ -1,5 +1,6 @@
 package hello.hellospring;
 
+import hello.hellospring.aop.TimeTraceAop;
 import hello.hellospring.repository.*;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,5 +75,13 @@ public class SpringConfig {
         org.springframework.data.jpa.repository.JpaRepository 를 가지고 있으면
         스프링 데이터 JPA 가 해당 인터페이스의 구현체를 자동으로 만들어주고 스프링 빈에 등록해줌
     */
+
+/*
+    // AOP 스프링 빈에 직접 등록해서 사용하기
+    @Bean
+    public TimeTraceAop timeTraceAop(){
+        return new TimeTraceAop();
+    }
+*/
 
 }

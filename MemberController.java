@@ -36,7 +36,10 @@ public class MemberController {
     // => MemberService 코드에 @Service 명시해주어야 함
     @Autowired
     public MemberController(MemberService memberService) {
+
         this.memberService = memberService;
+        System.out.println("memberService = " + memberService.getClass());
+
     }
 
     // GET 은 조회할 때 주로 씀
