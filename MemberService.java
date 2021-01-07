@@ -5,12 +5,16 @@ import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 // @Component 가 @Service 에 포함되어 있음
 //@Service
+/* JPA 쓸 때 주의할 점 : 항상 트렌젝션이 있어야 함
+/  데이터를 저장하거나 변경할 때는 항상 트렌젝션이 있어야 함 */
+@Transactional
 public class MemberService {
 
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -25,6 +29,9 @@ public class MemberService {
     }
 
     // 회원가입
+    /* 회원가입할 때만 필요하니까 여기에만 트렌젝션을 써주어도 됨 */
+    //@Transactional
+    // JPA 는 모든 join 들어올 때 데이터 변경이 다 transaction 안에서 실행됨
     public Long join(Member member){
 
         // Method 으로 뽑아내기
